@@ -1,0 +1,76 @@
+<!-- Product section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" [src]="restDetails.photograph"
+                    alt="not found" /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">ID : {{restDetails.id}}</div>
+                <h1 class="display-5 fw-bolder">{{restDetails.name}}</h1>
+
+                <!-- update & delete -->
+
+                <div class="fs-5 mb-2">
+                    <a routerLink ="/updates-restaurent/{{restDetails.id}}">Update Restaurent</a>  |
+                    <a routerLink ="/delete-restaurent/{{restDetails.id}}">Delete Restaurent</a>
+                </div>
+                <div class="fs-5 mb-5">
+                    <span>Cusine : {{restDetails.cuisine_type}}</span>
+                    <p>Neighborhood: {{restDetails.neighborhood}}</p>
+                    <p>Address: {{restDetails.address}}</p>
+                    <p></p>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Operating Hours
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark text-light">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="list-group ">
+                                    <li class="list-group-item">Monday: {{restDetails.operating_hours.Monday}}</li>
+                                    <li class="list-group-item">Tuesday: {{restDetails.operating_hours.Tuesday}}</li>
+                                    <li class="list-group-item">Wednesday: {{restDetails.operating_hours.Wednesday}}
+                                    </li>
+                                    <li class="list-group-item">Thursday: {{restDetails.operating_hours.Thursday}}</li>
+                                    <li class="list-group-item">Friday: {{restDetails.operating_hours.Friday}}</li>
+                                    <li class="list-group-item">Saturday: {{restDetails.operating_hours.Saturday}}</li>
+                                    <li class="list-group-item">Sunday: {{restDetails.operating_hours.Sunday}}</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- review -->
+                &nbsp;&nbsp;<span>
+                    <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Review
+                      </button>
+                    
+                    <div class="collapse mt-1" id="collapseExample">
+                      <div class="card card-body bg-dark text-light">
+                        <div *ngFor="let review of restDetails.reviews">
+                            <h5>{{review.rating}}</h5>
+                            <h5>{{review.name}} -</h5>
+                            <h6>{{review.date}}</h6>
+                            <h6>{{review.comments}}</h6>
+
+                        </div>
+                      </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
